@@ -46,12 +46,13 @@ size_t atminties_naudojimas_list(const list<Studentas>& Grupe) {
 void rus_3_strat_vector(vector<Studentas>& Grupe, vector<Studentas>& vargsiukai3, vector<Studentas>& kietiakai3){
 
             auto it = std::partition(Grupe.begin(), Grupe.end(), [](const Studentas& s){
-                float galutinis = (s.getRezultatasVidurkis() + s.getRezultatasMediana()))/2.0;
+                float galutinis = (s.getRezultatasVidurkis() + s.getRezultatasMediana())/2.0;
                 return galutinis < 5.0;
             });
 
             vargsiukai3.insert(vargsiukai3.end(), Grupe.begin(), it);
             kietiakai3.insert(kietiakai3.end(), it, Grupe.end());
 }
+
 
 
