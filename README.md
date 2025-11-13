@@ -33,6 +33,7 @@ Atliktas testavimas su fiksuotu vektoriaus konteineriu, jo greičiausia dalijimo
 
 *Testavimas su Studentu struct*
 
+
 | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas |
 | -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- |
 | 100,000        | 0.596       | 1.738          | 0.071                  | 0.414       | 0.609        | 3.429          |
@@ -45,6 +46,30 @@ Atliktas testavimas su fiksuotu vektoriaus konteineriu, jo greičiausia dalijimo
 | 100,000        | 0.848       | 1.988          | 0.069                  | 0.587       | 0.645        | 4.136          |
 | 1,000,000      | 7.974       | 22.533         | 0.729                  | 4.781       | 7.741        | 43.757         |
 
+# Eksperimentinė analizė
+Eksperimentinė analizė atlikta priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3. Kaip ir realizacijos spartos testavime, analizė atlikta su fiksuotu vektoriaus konteineriu, jo greičiausia dalijimo, t.y. 3 anksčiau realizuota strategi ir 100000 bei 1000000 dydžio failus (tokie patys kaip naudoti ankstesniuose testavimuose). Matuojami buvo 5 programos veiksnumai: nuskaitymas iš failo, duomenų rūšiavimas pagal galutinį pažymį(šiuo atveju kreipiamas dėmesys ir į mediana skaičiuota pažymi, ir į vidurkiu), studentų išskirstymas pagal pažymius į vargšiukus ir kietiakus (skirstymo pagrindas apibrėžtas programos aprašyme), tuomet tų grupių išvedimas į du atskirus failus bei bendras programos veikimo laikas, t.y. visų kitų laikų suma.
+
+*Analizė su Studentu struct*
+
+| Versija | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas | Failo dydis (KB) |
+| ------- | -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- | ---------------- |
+| O1      | 100,000        | 0.410       | 0.686          | 0.056                  | 0.522       | 0.702        | 2.376          | 297              |
+| O2      | 100,000        | 0.276       | 0.562          | 0.031                  | 0.278       | 0.401        | 1.549          | 285              |
+| O3      | 100,000        | 0.243       | 0.487          | 0.037                  | 0.282       | 0.396        | 1.444          | 308              |
+| O1      | 1,000,000      | 3.963       | 8.965          | 0.487                  | 4.246       | 7.021        | 24.539         | 297              |
+| O2      | 1,000,000      | 2.982       | 7.469          | 0.442                  | 3.034       | 5.232        | 19.159         | 285              |
+| O3      | 1,000,000      | 2.727       | 6.815          | 0.436                  | 3.000       | 4.989        | 17.967         | 308              |
+
+*Analizė su Studentu class*
+
+| Versija | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas | Failo dydis (KB) |
+| ------- | -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- | ---------------- |
+| O1      | 100,000        | 0.485       | 0.908          | 0.029                  | 0.531       | 0.913        | 2.867          | 286              |
+| O2      | 100,000        | 0.490       | 0.951          | 0.036                  | 0.436       | 0.591        | 2.504          | 276              |
+| O3      | 100,000        | 0.422       | 0.812          | 0.030                  | 0.490       | 0.683        | 2.437          | 305              |
+| O1      | 1,000,000      | 4.164       | 11.908         | 0.573                  | 6.569       | 8.142        | 31.356         | 286              |
+| O2      | 1,000,000      | 4.603       | 11.870         | 0.428                  | 5.117       | 8.103        | 30.121         | 276              |
+| O3      | 1,000,000      | 12.409      | 4.399          | 0.628                  | 5.000       | 8.650        | 31.087         | 305              |
 
 
 # Kiekvienos versijos aprašymas
