@@ -9,6 +9,7 @@ using std::vector;
 
 
 class Studentas {
+private:
     std::string vard_;
     std::string pav_;
     std::vector<int> paz_;
@@ -22,7 +23,7 @@ public:
     Studentas(const string& vard, const string& pav, const vector<int>& paz, int egzas);
     Studentas(std::istream& is);
     
-    ~Studentas() = default;
+    ~Studentas() { }
 
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; }
@@ -35,3 +36,4 @@ public:
 
     void skaiciuotiRezultatus();
 };
+
