@@ -51,7 +51,7 @@ Eksperimentinė analizė atlikta priklausomai nuo kompiliatoriaus optimizavimo l
 
 *Analizė su Studentu struct*
 
-| Versija | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas | Failo dydis (KB) |
+| Versija | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas | exe Failo dydis (KB) |
 | ------- | -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- | ---------------- |
 | O1      | 100,000        | 0.410       | 0.686          | 0.056                  | 0.522       | 0.702        | 2.376          | 297              |
 | O2      | 100,000        | 0.276       | 0.562          | 0.031                  | 0.278       | 0.401        | 1.549          | 285              |
@@ -62,7 +62,7 @@ Eksperimentinė analizė atlikta priklausomai nuo kompiliatoriaus optimizavimo l
 
 *Analizė su Studentu class*
 
-| Versija | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas | Failo dydis (KB) |
+| Versija | Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas | exe Failo dydis (KB) |
 | ------- | -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- | ---------------- |
 | O1      | 100,000        | 0.485       | 0.908          | 0.029                  | 0.531       | 0.913        | 2.867          | 286              |
 | O2      | 100,000        | 0.490       | 0.951          | 0.036                  | 0.436       | 0.591        | 2.504          | 276              |
