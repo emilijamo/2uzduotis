@@ -225,14 +225,7 @@ int main (){
             vector<Studentas> kietiakai3;
 
             auto start_3 = high_resolution_clock::now();
-
-            auto it = std::partition(Grupe3.begin(), Grupe3.end(), [](const Studentas& s){
-                float galutinis = (s.rez_vidurkis + s.rez_mediana)/2.0;
-                return galutinis < 5.0;
-            });
-
-            vargsiukai3.insert(vargsiukai3.end(), Grupe3.begin(), it);
-            kietiakai3.insert(kietiakai3.end(), it, Grupe3.end());
+            rus_3_strat_vector(Grupe3,vargsiukai3,kietiakai3);
             auto end_3 = high_resolution_clock::now();
 
             strategija3_laikas = duration<double>(end_3 - start_3).count();
@@ -310,13 +303,7 @@ int main (){
     
             auto start_split = high_resolution_clock::now();
             vector<Studentas> vargsiukai, kietiakai;
-            for (auto temp : Grupe) {
-                float galutinis = (temp.rez_vidurkis + temp.rez_mediana)/2.0;
-                if (galutinis < 5.0)
-                    vargsiukai.push_back(temp);
-                else
-                    kietiakai.push_back(temp);
-            }
+            void rus_3_strat_vector(Grupe,vargsiukai,kietiakai);
             auto end_split = high_resolution_clock::now();
             dalijimo_laikas = duration<double>(end_split - start_split).count();
     
@@ -664,3 +651,4 @@ int main (){
     }
     return 0;
 }
+
