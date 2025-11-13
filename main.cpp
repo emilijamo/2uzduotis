@@ -157,7 +157,7 @@ int main (){
             vector<Studentas> vargsiukai1, kietiakai1;
 
             for (auto temp : Grupe1) {
-                float galutinis = (temp.rez_vidurkis + temp.rez_mediana)/2.0;
+                float galutinis = (temp.getRezultatasVidurkis() + temp.getRezultatasMediana())/2.0;
                 if (galutinis < 5.0)
                     vargsiukai1.push_back(temp);
                 else
@@ -186,12 +186,12 @@ int main (){
             vector<Studentas> vargsiukai2;
 
             sort(Grupe2.begin(), Grupe2.end(), [](const Studentas &a, const Studentas &b){
-                return a.rez_vidurkis > b.rez_vidurkis;
+                return a.getRezultatasVidurkis() > b.getRezultatasVidurkis();
             });
 
             while (true) {
                 Studentas s = Grupe2.back();
-                if (s.rez_vidurkis < 5.0) {
+                if (s.getRezultatasVidurkis() < 5.0) {
                     vargsiukai2.push_back(s);
                     Grupe2.pop_back();
                 } else break;
@@ -259,7 +259,7 @@ int main (){
     auto start_sort = high_resolution_clock::now();    
     if (rus_pasirinkimas == 1) {
         sort(Grupe.begin(), Grupe.end(), [](Studentas a, Studentas b) {
-            string s1 = a.vard, s2 = b.vard;
+            string s1 = a.vardas(), s2 = b.vardas();
     
             int i = 0;
             while (i < s1.size() && !isdigit(s1[i])) i++;
@@ -282,14 +282,14 @@ int main (){
             float gal_rez_a, gal_rez_b;
     
             if (rez_pasirinkimas == 1) {
-                gal_rez_a = a.rez_vidurkis;
-                gal_rez_b = b.rez_vidurkis;
+                gal_rez_a = a.getRezultatasVidurkis();
+                gal_rez_b = b.getRezultatasVidurkis();
             } else if (rez_pasirinkimas == 2) {
-                gal_rez_a = a.rez_mediana;
-                gal_rez_b = b.rez_mediana;
+                gal_rez_a = a.getRezultatasMediana();
+                gal_rez_b = b.getRezultatasMediana();
             } else { 
-                gal_rez_a = (a.rez_vidurkis + a.rez_mediana) / 2.0;
-                gal_rez_b = (b.rez_vidurkis + b.rez_mediana) / 2.0;
+                gal_rez_a = (a.getRezultatasVidurkis() + a.getRezultatasMediana()) / 2.0;
+                gal_rez_b = (b.getRezultatasVidurkis() + b.getRezultatasMediana()) / 2.0;
             }
     
             return gal_rez_a > gal_rez_b; 
@@ -303,7 +303,7 @@ int main (){
     
             auto start_split = high_resolution_clock::now();
             vector<Studentas> vargsiukai, kietiakai;
-            void rus_3_strat_vector(Grupe,vargsiukai,kietiakai);
+            rus_3_strat_vector(Grupe,vargsiukai,kietiakai);
             auto end_split = high_resolution_clock::now();
             dalijimo_laikas = duration<double>(end_split - start_split).count();
     
@@ -463,7 +463,7 @@ int main (){
             list<Studentas> vargsiukai1, kietiakai1;
 
             for (auto temp : Grupe1) {
-                float galutinis = (temp.rez_vidurkis + temp.rez_mediana)/2.0;
+                float galutinis = (temp.getRezultatasVidurkis() + temp.getRezultatasMediana())/2.0;
                 if (galutinis < 5.0)
                     vargsiukai1.push_back(temp);
                 else
@@ -492,7 +492,7 @@ int main (){
 
             auto start_2 = high_resolution_clock::now();
             for (auto it = Grupe2.begin(); it != Grupe2.end(); ) {
-            float galutinis = (it->rez_vidurkis + it->rez_mediana) / 2.0;
+            float galutinis = (it->getRezultatasVidurkis() + it->getRezultatasMediana()) / 2.0;
             if (galutinis < 5.0) {
                 vargsiukai2.push_back(*it);   
                 it = Grupe2.erase(it);          
@@ -523,7 +523,7 @@ int main (){
             auto start_3 = high_resolution_clock::now();
 
             auto it = std::stable_partition(Grupe3.begin(), Grupe3.end(), [](const Studentas& s) {
-                float galutinis = (s.rez_vidurkis + s.rez_mediana) / 2.0;
+                float galutinis = (s.getRezultatasVidurkis() + s.getRezultatasMediana()) / 2.0;
                 return galutinis < 5.0;
             });
 
@@ -562,7 +562,7 @@ int main (){
     auto start_sort = high_resolution_clock::now();    
     if (rus_pasirinkimas == 1) {
         Grupe.sort( [](Studentas a, Studentas b) {
-            string s1 = a.vard, s2 = b.vard;
+            string s1 = a.vardas(), s2 = b.vardas();
     
             int i = 0;
             while (i < s1.size() && !isdigit(s1[i])) i++;
@@ -585,14 +585,14 @@ int main (){
             float gal_rez_a, gal_rez_b;
     
             if (rez_pasirinkimas == 1) {
-                gal_rez_a = a.rez_vidurkis;
-                gal_rez_b = b.rez_vidurkis;
+                gal_rez_a = a.getRezultatasVidurkis();
+                gal_rez_b = b.getRezultatasVidurkis();
             } else if (rez_pasirinkimas == 2) {
-                gal_rez_a = a.rez_mediana;
-                gal_rez_b = b.rez_mediana;
+                gal_rez_a = a.getRezultatasMediana();
+                gal_rez_b = b.getRezultatasMediana();
             } else { 
-                gal_rez_a = (a.rez_vidurkis + a.rez_mediana) / 2.0;
-                gal_rez_b = (b.rez_vidurkis + b.rez_mediana) / 2.0;
+                gal_rez_a = (a.getRezultatasVidurkis() + a.getRezultatasMediana()) / 2.0;
+                gal_rez_b = (b.getRezultatasVidurkis() + b.getRezultatasMediana()) / 2.0;
             }
     
             return gal_rez_a > gal_rez_b; 
@@ -607,7 +607,7 @@ int main (){
             auto start_split = high_resolution_clock::now();
             list<Studentas> vargsiukai, kietiakai;
             for (auto temp : Grupe) {
-                float galutinis = (temp.rez_vidurkis + temp.rez_mediana)/2.0;
+                float galutinis = (temp.getRezultatasVidurkis() + temp.getRezultatasMediana())/2.0;
                 if (galutinis < 5.0)
                     vargsiukai.push_back(temp);
                 else
@@ -651,4 +651,5 @@ int main (){
     }
     return 0;
 }
+
 
