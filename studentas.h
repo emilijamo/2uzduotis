@@ -2,16 +2,36 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 using std::string;
 using std::vector;
 
 
-struct Studentas {
-    std::string vard;
-    std::string pav;
-    std::vector<int> paz;
-    int egzas;
-    float rez_vidurkis;
-    float rez_mediana;
+class Studentas {
+    std::string vard_;
+    std::string pav_;
+    std::vector<int> paz_;
+    int egzas_;
+    float rez_vidurkis_;
+    float rez_mediana_;
+
+public:
+    Studentas();
+    Studentas(const string& vard, const string& pav);
+    Studentas(const string& vard, const string& pav, const vector<int>& paz, int egzas);
+    Studentas(std::istream& is);
+    
+    ~Studentas() = default;
+
+    inline string vardas() const { return vard_; }
+    inline string pavarde() const { return pav_; }
+    inline const vector<int>& pazymiai() const { return paz_; }
+    inline int egzaminas() const { return egzas_; }
+    inline float getRezultatasVidurkis() const { return rez_vidurkis_; }
+    inline float getRezultatasMediana() const { return rez_mediana_; }
+
+    std::istream& readStudent(std::istream& is);
+
+    void skaiciuotiRezultatus();
 };
