@@ -26,10 +26,12 @@ using std::list;
 
 
 Studentas ivesk(){
-    Studentas Laik;
+    string vardas, pavarde;
+    vector<int> pazymiai;
+    int egzas;
    
-    cout<<"Iveskite varda: "; cin>>Laik.vard;
-    cout<<"Iveskite pavarde: "; cin>>Laik.pav;
+    cout<<"Iveskite varda: "; cin>> vardas;
+    cout<<"Iveskite pavarde: "; cin>> pavarde;
 
     int paz_gen_pasirinkimas;
     cout << "Kaip norite i sistema suvesti rezultatus?\n";
@@ -50,7 +52,7 @@ Studentas ivesk(){
                     for (int i = 0; i < kiek; i++) {
                         cout << "Vedamas " << i+1 << " pazymys is " << kiek << endl;
                         int paz = skaiciaus_ivedimas("Iveskite pazymi: ", 1, 10);
-                        Laik.paz.push_back(paz);
+                        pazymiai.push_back(paz);
                     }
                     break;
                 } else {
@@ -70,7 +72,7 @@ Studentas ivesk(){
                 if (ar_skaicius(m)) {
                     int paz = stoi(m);
                     if (paz >= 1 && paz <= 10) {
-                        Laik.paz.push_back(paz);
+                        pazymiai.push_back(paz);
                     } else {
                         cout << "Pazymys turi buti intervale nuo 1 iki 10.\n";
                     }
@@ -80,7 +82,7 @@ Studentas ivesk(){
             }
         }
 
-        Laik.egzas = skaiciaus_ivedimas("Iveskite egzamino pazymi: ", 1, 10);
+        egzas = skaiciaus_ivedimas("Iveskite egzamino pazymi: ", 1, 10);
 
     }
 
@@ -90,24 +92,21 @@ Studentas ivesk(){
         int gen_kiek = skaiciaus_ivedimas("Kiek namu darbu pazymiu norite sugeneruoti? ", 1);
         for (int i = 0; i < gen_kiek; i++) {
             int paz = rng(); 
-            Laik.paz.push_back(paz);
+            pazymiai.push_back(paz);
         }
 
         cout << "Sugeneruoti namu darbu pazymiai: ";
-        for (int i = 0; i < Laik.paz.size(); i++) {
-            cout << Laik.paz[i] << " ";
+        for (int pazymys : pazymiai) {
+            cout << pazymys << " ";
         }
         cout << endl;
 
-        Laik.egzas = rng(); 
-        cout << "Sugeneruotas egzamino pazymys: " << Laik.egzas << endl;
+        egzas = rng(); 
+        cout << "Sugeneruotas egzamino pazymys: " << egzas << endl;
     }
 
-    
-    Laik.rez_vidurkis = Laik.egzas*0.6 + vidurkis(Laik.paz)*0.4;
-    Laik.rez_mediana = Laik.egzas*0.6 + mediana(Laik.paz)*0.4;
-    
-    return Laik;
+    Studentas studentas(vardas, pavarde, pazymiai, egzas);
+    return studentas;
 
     }
 
@@ -127,25 +126,10 @@ void failo_nuskaitymas(string fpav, Konteineris& Grupe) {
     string eilute;
     while (getline(is, eilute)) {
         stringstream ss(eilute);
-        Studentas Laik;
+        Studentas studentas;
 
-         ss >> Laik.vard >> Laik.pav;
-
-        vector<int> nd_paz;
-        int paz;
-        while (ss >> paz) {
-            nd_paz.push_back(paz);
-        }
-
-        Laik.egzas = nd_paz.back();
-        nd_paz.pop_back();
-
-        Laik.paz = nd_paz;       
-
-        Laik.rez_vidurkis = Laik.egzas*0.6 + vidurkis(Laik.paz)*0.4;
-        Laik.rez_mediana = Laik.egzas*0.6 + mediana(Laik.paz)*0.4;
-
-        Grupe.push_back(Laik);
+        studentas.readStudent(ss);
+        Grupe.push_back(studentas);
     }
 
     is.close();
@@ -177,16 +161,16 @@ void rezultatu_isvedimas(string failo_vardas, Konteineris& Grupe, int rez_pasiri
     os << "--------------------------------------------------\n";
 
     for (auto &temp : Grupe) {
-        os << left << setw(15) << temp.vard
-           << left << setw(15) << temp.pav;
+        os << left << setw(15) << temp.vardas()
+           << left << setw(15) << temp.pavarde();
 
         if (rez_pasirinkimas == 1)
-            os << right << setw(10) << fixed << setprecision(2) << temp.rez_vidurkis << endl;
+            os << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasVidurkis() << endl;
         else if (rez_pasirinkimas == 2)
-            os << right << setw(10) << fixed << setprecision(2) << temp.rez_mediana << endl;
+            os << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasMediana() << endl;
         else if (rez_pasirinkimas == 3)
-            os << right << setw(10) << fixed << setprecision(2) << temp.rez_vidurkis
-               << right << setw(10) << fixed << setprecision(2) << temp.rez_mediana << endl;
+            os << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasVidurkis()
+               << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasMediana() << endl;
     }
 
     os.close();
@@ -243,7 +227,7 @@ void isvesti_studentus (Konteineris& Grupe,Konteineris& vargsiukai,Konteineris& 
                 if (kategorizavimas == 1) {
 
                     for (auto temp : Grupe) {
-                        float galutinis = (temp.rez_vidurkis + temp.rez_mediana)/2.0;
+                        float galutinis = (temp.getRezultatasVidurkis() + temp.getRezultatasMediana())/2.0;
                         if (galutinis < 5.0)
                             vargsiukai.push_back(temp);
                         else
@@ -284,16 +268,16 @@ void isvesti_studentus (Konteineris& Grupe,Konteineris& vargsiukai,Konteineris& 
             cout << "--------------------------------------------------\n";
 
             for (auto temp :Grupe){
-                cout << left << setw(15) << temp.vard
-                     << left << setw(15) << temp.pav;
+                cout << left << setw(15) << temp.vardas()
+                     << left << setw(15) << temp.pavarde();
 
                 if (rez_pasirinkimas == 1)
-                    cout << right << setw(10) << fixed << setprecision(2) << temp.rez_vidurkis << endl;
+                    cout << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasVidurkis() << endl;
                 else if (rez_pasirinkimas == 2)
-                    cout << right << setw(10) << fixed << setprecision(2) << temp.rez_mediana << endl;
+                    cout << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasMediana() << endl;
                 else if (rez_pasirinkimas == 3)
-                    cout << right << setw(10) << fixed << setprecision(2) << temp.rez_vidurkis
-                         << right << setw(10) << fixed << setprecision(2) << temp.rez_mediana << endl;
+                    cout << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasVidurkis()
+                         << right << setw(10) << fixed << setprecision(2) << temp.getRezultatasMediana() << endl;
             }
         }
 }
@@ -304,5 +288,6 @@ template void rezultatu_isvedimas<vector<Studentas>>(string failo_vardas, vector
 template void rezultatu_isvedimas<list<Studentas>>(string failo_vardas, list<Studentas>& Grupe, int rez_pasirinkimas);
 template void isvesti_studentus(vector<Studentas>&, vector<Studentas>&, vector<Studentas>&, int);
 template void isvesti_studentus(list<Studentas>&, list<Studentas>&, list<Studentas>&, int);
+
 
 
