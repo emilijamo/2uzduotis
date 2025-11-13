@@ -25,15 +25,19 @@ std::istream& Studentas::readStudent(std::istream& is) {
 
     paz_.clear();
     int pazymys;
-    while (is >> pazymys && pazymys != -1) {
+    while (is >> pazymys) {
         paz_.push_back(pazymys);
     }
 
-    if (is.fail()) {
+    if (is.fail() && !is.eof()) {
         is.clear();
     }
 
-    is >> egzas_;
+    if (!paz_.empty()) {
+        egzas_ = paz_.back();
+        paz_.pop_back();
+    }
+
     skaiciuotiRezultatus();
     return is;
 }
@@ -41,4 +45,5 @@ std::istream& Studentas::readStudent(std::istream& is) {
 void Studentas::skaiciuotiRezultatus() {
     rez_vidurkis_ = egzas_ * 0.6f + vidurkis(paz_) * 0.4f;
     rez_mediana_ = egzas_ * 0.6f + mediana(paz_) * 0.4f;
+
 }
