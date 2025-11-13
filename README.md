@@ -1,4 +1,4 @@
-# 1 užduotis
+# 2 užduotis
 *Ši programa yra skirta suskaičiuoti galutinius studentų rezultatus iš namų darbų bei egzamino pažymių.*
 Namų darbų bei egzamino pažymius galima įvesti pačiam naudotojui, galima pasirinkti galimybę balus sugeneruoti automatiškai (namų darbų balų skaičius taip pat įvedamas naudotojo) arba galima nuskaityti duomenis iš failo.
 
@@ -9,6 +9,24 @@ Programa turi funkcionalumą, leidžiantį pasirinkti generuoti atsitiktinius st
 
 Įvedant duomenis pažiam naudotojui, rezultatas yra lentelė, kurioje matoma studentų vardai, pavardės ir galutiniai rezultatai.  Taip pat naudotojui suteikiamas pasirinkimas, kaip skaičiuotą rezultatą jis nori matyti galutinėje išvestyje - naudojant medianą, vidurkį ar abiem variantais skaičiuotus rezultatus.
 Duomenis nuskaitant iš failo, naudotojas gali pasirinkti, nori matyti rezultatų lentelę terminale ar nori lentelę įrašyti į naują failą. Rezultatas nuskaitant nuo failo yra lentelė, kurioje pateikiami studentų vardai, pavardės ir galutiniai rezultatai, skaičiuoti tiek su mediana, tiek su vidurkiu. Pasirinkus lentelę įrašyti į failą, naudotojas gali studentus išvesti į du failus, išskirstant juos pagal jų galutinį pažymį. Į "vargšiukų" grupę yra skiriami studentai, kurių galutinis pažymys yra mažesnis už 5, o į "kietiakų" grupę skiriami studentai, kurių pažymys yra lygus arba didesnis už 5 (Verta atkreipti dėmesį, kad skirstant į grupes naudojami abiem būdais skaičiuoti galutiniai balai ir studentas į tam tikrą kategoriją skiriamas pagal jų vidurkį).
+
+# Įdiegimo instrukcija
+
+1. Kompiuteryje turėkite įdiegtus cmake interpretatorių bei C++ kompiliatorių. Jei neturite, galite juos įsidiegti čia: https://cmake.org/download/
+  https://cmake.org/download/
+  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022
+
+3. Iš šios github repozitorijos, atsisiųskite CMakeFiles.txt, duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h, duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp, studentas.cpp failus
+
+4. Susikurkite darbinį aplankalą, kuriame norėsite vykdyti programą. Į šį aplanką įdėkite visus parsisiųstusfailus iš github. Šiame aplankale sukurkite dar du aplankalus: src ir Include (būtinai tokiais pavadinimais). Į src aplanką perkelkite visus .cpp failus (duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp, studentas.cpp), o į Include visus .h failus (duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h).
+
+5. Tuomet terminalą nueikite iki savo darbinio aplankalo ir tuomet paleiskite šias komandas:
+   1) cmake CMakeLists.txt
+   2) cmake --build .
+   3) cd .\Debug\
+   4) .\v1_1.exe
+
+Norint įdiegimą atlikti greičiau - pakartokite 1-3 žingsnius ir atsisiųskite repozitorijoje esantį run.bat failą. Jį taip pat įsikelkite į darbinį aplanką ir tiesiog paleiskite. Pirmą kartą atlikus įdiegimą programa pasileidžia automatiškai, bet jei norite ją paleisti dar kartą, per terminalą nueikite iki aplanko, kuriame yra .exe failas ir paleiskite jį įvedant terminale .\v1_1.exe
 
 # Kiekvienos versijos aprašymas
 
@@ -297,23 +315,6 @@ Buvo matuojamas failų kūrimo greitis, kuriant failą su ***1000, 10000,100000,
 | 1,000,000      | 0                     | 49,635,960     | 70,364,040    | 120,000,000   |
 | 10,000,000     | 0                     | 495,566,640    | 704,433,360   | 1,200,000,000 |
 
-# Įdiegimo instrukcija
-
-1. Kompiuteryje turėkite įdiegtus cmake interpretatorių bei C++ kompiliatorių. Jei neturite, galite juos įsidiegti čia: https://cmake.org/download/
-  https://cmake.org/download/
-  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022
-
-3. Iš šios github repozitorijos, atsisiųskite CMakeFiles.txt, duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h, duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp failus
-
-4. Susikurkite darbinį aplankalą, kuriame norėsite vykdyti programą. Į šį aplanką įdėkite visus parsisiųstusfailus iš github. Šiame aplankale sukurkite dar du aplankalus: src ir Include (būtinai tokiais pavadinimais). Į src aplanką perkelkite visus .cpp failus (duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp), o į Include visus .h failus (duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h).
-
-5. Tuomet terminalą nueikite iki savo darbinio aplankalo ir tuomet paleiskite šias komandas:
-   1) cmake CMakeLists.txt
-   2) cmake --build .
-   3) cd .\Debug\
-   4) .\v1.exe
-
-Norint įdiegimą atlikti greičiau - pakartokite 1-3 žingsnius ir atsisiųskite repozitorijoje esantį run.bat failą. Jį taip pat įsikelkite į darbinį aplanką ir tiesiog paleiskite. Pirmą kartą atlikus įdiegimą programa pasileidžia automatiškai, bet jei norite ją paleisti dar kartą, per terminalą nueikite iki aplanko, kuriame yra .exe failas ir paleiskite jį įvedant terminale .\v1.exe
 
 # Naudojimosi instrukcija
 
