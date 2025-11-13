@@ -15,6 +15,7 @@ int skaiciaus_ivedimas(string prasymas, int min=INT_MIN, int max=INT_MAX);
 
 size_t atminties_naudojimas_vector(const vector<Studentas>& Grupe);
 size_t atminties_naudojimas_list(const list<Studentas>& Grupe);
+void rus_3_strat_vector(vector<Studentas>& Grupe, vector<Studentas>& vargsiukai3, vector<Studentas>& kietiakai3);
 
 class RandInt {
 public:
@@ -26,4 +27,5 @@ private:
     std::uniform_int_distribution<int> dist;
 
 };
+
 
