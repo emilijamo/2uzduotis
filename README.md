@@ -28,6 +28,25 @@ Duomenis nuskaitant iš failo, naudotojas gali pasirinkti, nori matyti rezultat�
 
 Norint įdiegimą atlikti greičiau - pakartokite 1-3 žingsnius ir atsisiųskite repozitorijoje esantį run.bat failą. Jį taip pat įsikelkite į darbinį aplanką ir tiesiog paleiskite. Pirmą kartą atlikus įdiegimą programa pasileidžia automatiškai, bet jei norite ją paleisti dar kartą, per terminalą nueikite iki aplanko, kuriame yra .exe failas ir paleiskite jį įvedant terminale .\v1_1.exe
 
+# Realizacijos spartos testavimas su struct ir class
+Atliktas testavimas su fiksuotu vektoriaus konteineriu, jo greičiausia dalijimo, t.y. 3 anksčiau realizuota strategi ir 100000 bei 1000000 dydžio failus (tokie patys kaip naudoti ankstesniuose testavimuose). Matuojami buvo 5 programos veiksnumai: nuskaitymas iš failo, duomenų rūšiavimas pagal galutinį pažymį(šiuo atveju kreipiamas dėmesys ir į mediana skaičiuota pažymi, ir į vidurkiu), studentų išskirstymas pagal pažymius į vargšiukus ir kietiakus (skirstymo pagrindas apibrėžtas programos aprašyme), tuomet tų grupių išvedimas į du atskirus failus bei bendras programos veikimo laikas, t.y. visų kitų laikų suma.
+
+*Testavimas su Studentu struct*
+
+| Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas |
+| -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- |
+| 100,000        | 0.596       | 1.738          | 0.071                  | 0.414       | 0.609        | 3.429          |
+| 1,000,000      | 6.961       | 25.472         | 1.321                  | 1.321       | 5.720        | 46.818         |
+
+*Testavimas su Studentu class*
+
+| Duomenų kiekis | Nuskaitymas | Sort pagal rez | Išskirstymas <5 ir >=5 | <5 įrašymas | >=5 įrašymas | Bendras laikas |
+| -------------- | ----------- | -------------- | ---------------------- | ----------- | ------------ | -------------- |
+| 100,000        | 0.848       | 1.988          | 0.069                  | 0.587       | 0.645        | 4.136          |
+| 1,000,000      | 7.974       | 22.533         | 0.729                  | 4.781       | 7.741        | 43.757         |
+
+
+
 # Kiekvienos versijos aprašymas
 
 *V.01*
