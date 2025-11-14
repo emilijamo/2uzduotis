@@ -23,7 +23,14 @@ public:
     Studentas(const string& vard, const string& pav, const vector<int>& paz, int egzas);
     Studentas(std::istream& is);
     
-    ~Studentas() { }
+    ~Studentas() {
+        vard_.clear();
+        pav_.clear();
+        paz_.clear();
+        egzas_ = 0;
+        rez_vidurkis_ = 0.0f;
+        rez_mediana_ = 0.0f;
+    }
 
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; }
@@ -36,4 +43,5 @@ public:
 
     void skaiciuotiRezultatus();
 };
+
 
