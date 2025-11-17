@@ -492,13 +492,16 @@ int main (){
 
             auto start_2 = high_resolution_clock::now();
             for (auto it = Grupe2.begin(); it != Grupe2.end(); ) {
-            float galutinis = (it->getRezultatasVidurkis() + it->getRezultatasMediana()) / 2.0;
-            if (galutinis < 5.0) {
-                vargsiukai2.push_back(*it);   
-                it = Grupe2.erase(it);          
-            } else {
-                ++it;  
-              }
+            Grupe2.sort([](const Studentas &a, const Studentas &b){
+                return a.getRezultatasVidurkis() > b.getRezultatasVidurkis();
+            });
+            
+            while (!Grupe2.empty()) {
+                const Studentas& s = Grupe2.back();
+                if (s.getRezultatasVidurkis() < 5.0) {
+                    vargsiukai2.push_back(s);
+                    Grupe2.pop_back();
+                } else break;
             }
             auto end_2 = high_resolution_clock::now();
             strategija2_laikas = duration<double>(end_2 - start_2).count();
@@ -651,5 +654,6 @@ int main (){
     }
     return 0;
 }
+
 
 
