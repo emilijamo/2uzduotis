@@ -251,7 +251,7 @@ int main (){
             cout << "--Studento ivedimas rankiniu budu naudojant ivesties operatoriu --\n";
             Studentas ivestas;
             cin >> ivestas;
-            cout << "--Studento isvedimas naudojant ivesties operatoriu --\n";
+            cout << "--Studento isvedimas naudojant isvesties operatoriu --\n";
             cout << ivestas << endl;
 
             cout << "--Rule of Three demonstravimas su automatiskai (t.y. kode irasytu) studento duomenimis--\n";
@@ -583,7 +583,7 @@ int main (){
             cout << "--Studento ivedimas rankiniu budu naudojant ivesties operatoriu --\n";
             Studentas ivestas;
             cin >> ivestas;
-            cout << "--Studento isvedimas naudojant ivesties operatoriu --\n";
+            cout << "--Studento isvedimas naudojant isvesties operatoriu --\n";
             cout << ivestas << endl;
 
             cout << "--Rule of Three demonstravimas su automatiskai (t.y. kode irasytu) studento duomenimis--\n";
@@ -707,6 +707,7 @@ int main (){
     }
     return 0;
 }
+
 
 
 
