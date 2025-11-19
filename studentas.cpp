@@ -32,6 +32,13 @@ Studentas& Studentas::operator=(const Studentas& priskiriamas) {
     return *this;
 }
 
+
+
+std::ostream& operator<<(std::ostream& os, const Studentas& studentas) {
+    os << studentas.vardas() << " " << studentas.pavarde()  << " " << studentas.getRezultatasVidurkis();
+    return os;
+}
+
 Studentas::Studentas(std::istream& is) {
     readStudent(is);
 }
@@ -63,4 +70,5 @@ void Studentas::skaiciuotiRezultatus() {
     rez_mediana_ = egzas_ * 0.6f + mediana(paz_) * 0.4f;
 
 }
+
 
