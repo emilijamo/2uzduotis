@@ -41,9 +41,10 @@ int main (){
         cout << "1 - Ivesti patiems arba sugeneruoti\n";
         cout << "2 - Nuskaityti is failo\n";
         cout << "3 - Atsitikinai sugeneruoti ir issaugoti i faila\n";
-        cout << "Jei norite atlikti spartos analize, iveskite 4\n";
-        cout << "Jei norite atlikti strategiju analize, iveskite 5\n";
-        pasirinkimas = skaiciaus_ivedimas("Jusu pasirinkimas: ", 1,5);
+        cout << "4 - spartos analize\n";
+        cout << "5 - strategiju analize\n";
+        cout << "6 - Rule of Three bei ivesties/isvesties operaciju demonstracija\n";
+        pasirinkimas = skaiciaus_ivedimas("Jusu pasirinkimas: ", 1,6);
         
     
         double generavimo_laikas = 0.0;
@@ -246,6 +247,30 @@ int main (){
 
             return 0;
         }
+        else if (pasirinkimas ==6){
+            cout << "--Studento ivedimas rankiniu budu naudojant ivesties operatoriu --\n";
+            Studentas ivestas;
+            cin >> ivestas;
+            cout << "--Studento isvedimas naudojant ivesties operatoriu --\n";
+            cout << ivestas << endl;
+
+            cout << "--Rule of Three demonstravimas su automatiskai (t.y. kode irasytu) studento duomenimis--\n";
+            Studentas s1("Jonas", "Jonaitis", {8,9,7}, 8);        
+            cout << "Originalas: " << s1 << endl;
+            
+            Studentas s2 = s1;  
+            cout << "Kopija (naudojamas kopijavimo konstruktorius): " << s2 << endl;
+
+            Studentas s3;
+            s3 = s1;           
+            cout << "Priskirtas (priskyrimo operatorius): " << s3 << endl;
+            
+            s1 = ivestas;           
+            cout << "Priskirtas anksciau ivestas studentas automatiniams studento duomenims: " << s1 << endl;
+            
+            cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << (s2.vardas() == "Jonas") << endl;
+            
+        }
     
     cout << "Kaip norite surikiuoti studentus?\n";
     cout << "1 - Pagal varda\n";
@@ -348,8 +373,9 @@ int main (){
         cout << "1 - Ivesti patiems arba sugeneruoti\n";
         cout << "2 - Nuskaityti is failo\n";
         cout << "3 - Atsitikinai sugeneruoti ir issaugoti i faila\n";
-        cout << "Jei norite atlikti spartos analize, iveskite 4\n";
-        cout << "Jei norite atlikti strategijos analize, iveskite 5\n";
+        cout << "4 - spartos analize\n";
+        cout << "5 - strategiju analize\n";
+        cout << "6 - Rule of Three bei ivesties/isvesties operaciju demonstracija\n";
         pasirinkimas = skaiciaus_ivedimas("Jusu pasirinkimas: ", 1,5);
         
     
@@ -491,7 +517,7 @@ int main (){
             list<Studentas> vargsiukai2;
 
             auto start_2 = high_resolution_clock::now();
-            for (auto it = Grupe2.begin(); it != Grupe2.end(); ) {
+
             Grupe2.sort([](const Studentas &a, const Studentas &b){
                 return a.getRezultatasVidurkis() > b.getRezultatasVidurkis();
             });
@@ -551,6 +577,30 @@ int main (){
                  << " B\n";
                 
             return 0;
+        }
+                else if (pasirinkimas ==6){
+            cout << "--Studento ivedimas rankiniu budu naudojant ivesties operatoriu --\n";
+            Studentas ivestas;
+            cin >> ivestas;
+            cout << "--Studento isvedimas naudojant ivesties operatoriu --\n";
+            cout << ivestas << endl;
+
+            cout << "--Rule of Three demonstravimas su automatiskai (t.y. kode irasytu) studento duomenimis--\n";
+            Studentas s1("Jonas", "Jonaitis", {8,9,7}, 8);        
+            cout << "Originalas: " << s1 << endl;
+            
+            Studentas s2 = s1;  
+            cout << "Kopija (naudojamas kopijavimo konstruktorius): " << s2 << endl;
+
+            Studentas s3;
+            s3 = s1;           
+            cout << "Priskirtas (priskyrimo operatorius): " << s3 << endl;
+            
+            s1 = ivestas;           
+            cout << "Priskirtas anksciau ivestas studentas automatiniams studento duomenims: " << s1 << endl;
+            
+            cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << (s2.vardas() == "Jonas") << endl;
+            
         }
     
     cout << "Kaip norite surikiuoti studentus?\n";
@@ -654,6 +704,7 @@ int main (){
     }
     return 0;
 }
+
 
 
 
