@@ -32,6 +32,9 @@ public:
         rez_mediana_ = 0.0f;
     }
 
+    Studentas(const Studentas& kitas);  
+    Studentas& operator=(const Studentas& priskiriamas);  
+
     inline string vardas() const { return vard_; }
     inline string pavarde() const { return pav_; }
     inline const vector<int>& pazymiai() const { return paz_; }
@@ -43,5 +46,6 @@ public:
 
     void skaiciuotiRezultatus();
 };
+
 
 
