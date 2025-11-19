@@ -10,6 +10,91 @@ Programa turi funkcionalumą, leidžiantį pasirinkti generuoti atsitiktinius st
 Įvedant duomenis pažiam naudotojui, rezultatas yra lentelė, kurioje matoma studentų vardai, pavardės ir galutiniai rezultatai.  Taip pat naudotojui suteikiamas pasirinkimas, kaip skaičiuotą rezultatą jis nori matyti galutinėje išvestyje - naudojant medianą, vidurkį ar abiem variantais skaičiuotus rezultatus.
 Duomenis nuskaitant iš failo, naudotojas gali pasirinkti, nori matyti rezultatų lentelę terminale ar nori lentelę įrašyti į naują failą. Rezultatas nuskaitant nuo failo yra lentelė, kurioje pateikiami studentų vardai, pavardės ir galutiniai rezultatai, skaičiuoti tiek su mediana, tiek su vidurkiu. Pasirinkus lentelę įrašyti į failą, naudotojas gali studentus išvesti į du failus, išskirstant juos pagal jų galutinį pažymį. Į "vargšiukų" grupę yra skiriami studentai, kurių galutinis pažymys yra mažesnis už 5, o į "kietiakų" grupę skiriami studentai, kurių pažymys yra lygus arba didesnis už 5 (Verta atkreipti dėmesį, kad skirstant į grupes naudojami abiem būdais skaičiuoti galutiniai balai ir studentas į tam tikrą kategoriją skiriamas pagal jų vidurkį).
 
+# V1.2 aprašymas
+
+***Rule of Three implementacijos aprašymas***
+
+*Destruktorius*
+
+<img width="275" height="246" alt="image" src="https://github.com/user-attachments/assets/e8461ef9-3ae6-4efb-97a8-73ee286afb38" />
+
+Destruktorius automatiškai išvalo atmintį, kai Studentas objektas yra sunaikinamas. Tai užtikrina, kad visi dinaminiai resursai būtų tinkamai atlaisvinti. Jis iškviečiamas objektui išeinant iš scope, naudojant delete arba programos pabaigoje. Kartu yra apsauga nuo priskyrimo sau pačiam, kas užtikrina, kad seni duomenys būtų perrašyti. Yra grąžinamas reference, kuris leidža grandinį priskyrimą.
+
+*Kopijavimo konstruktorius*
+
+<img width="740" height="168" alt="image" src="https://github.com/user-attachments/assets/6b2ab388-06fd-4f13-abf7-fa9263391071" />
+
+Kopijavimo konstruktorius yra skirtas sukurti nauja Studento klasės objektą, kopijuojant kito objekto duomenis: vardą (vard_), pavardę (pav_), pažymius (paz_), egzamino rezultatą (egz_), bendrą rezultatą, skaičiuojant jį vidurkiu (rez_vidurkis_) ,bendrą rezultatą, skaičiuojant jį mediana (rez_mediana_).
+
+*Priskyrimo operatorius*
+
+<img width="658" height="342" alt="image" src="https://github.com/user-attachments/assets/03172c19-6de1-4037-9fe1-86ccd0bd0f7f" />
+
+Priskyrimo operatorius yra skirtas jau egzistuojančiam Studento objektui priskirti kito Studentas objekto duomenis.
+
+***Perdengti įvesties ir išvesties operatoriai***
+
+*Įvesties ranka operatorius (operator>>)*
+
+*Skaito studento duomenis iš įvesties srauto*
+
+Pavardės ir vardo įvedimas
+
+<img width="703" height="199" alt="image" src="https://github.com/user-attachments/assets/96f62529-adc3-4158-958b-2d5ce39663c9" />
+
+Pažymių įvedimas
+
+Realizuotas analogiškai anksčiau naudotam studentų įvedimui, tik šiuo atveju leidžiama pažymius vesti ne į vis naują eilutę, o vieną nuo kito atskirtus tarpais, įvedimo pabaigą pažymint įvedus žodį 'baigti'. 
+<img width="1058" height="639" alt="image" src="https://github.com/user-attachments/assets/9e7c920a-3239-40d5-b790-b9d28d0d830f" />
+
+Egzamino įvedimas
+
+<img width="1110" height="605" alt="image" src="https://github.com/user-attachments/assets/5d586fc4-df34-4d14-a8a5-1e36b74cb932" />
+
+Ši įvedimo realizacija kartu užtikrina tinkamų pažymių įvedimą, t.y. pažymiai priklauso intervalui nuo 1 iki 10 ir yra įvedami skaičiais.
+
+
+*Išvesties į ekraną operatorius*
+
+*Rašo studento duomenis į išvesties srautą*
+
+<img width="1048" height="128" alt="image" src="https://github.com/user-attachments/assets/f2b119ba-e473-4014-a3c3-2fc4df15b550" />
+
+Šia išvedimo funkcija išvedami studento vardas, pavardė ir galutinis pažymys, skaičiuotas pagal vidurkį į ekraną.
+
+
+*Įvestis/išvestis su failais*
+
+<img width="555" height="31" alt="image" src="https://github.com/user-attachments/assets/616a01fc-481d-4321-be5e-9c45481f6195" />
+
+<img width="872" height="31" alt="image" src="https://github.com/user-attachments/assets/12e1545f-683d-4909-b506-f4a38d2da9fa" />
+
+Failų įvedimas ir išvedimas realizuotas tokiomis funkcijomis. 
+
+
+
+**Rule of Three bei įvedimo/išvedimo operatorių demonstracija**
+
+Kad iliustruoti, kaip šie implementuoti programos atnaujinimai galėtų būti panaudojami, buvo prie meniu pridėtas šeštasis funkcionalumas. Dabar atitinkamai meniu atrodo taip:
+
+<img width="715" height="197" alt="image" src="https://github.com/user-attachments/assets/e20b9f7a-08b3-4362-a658-f8b37f35dcc9" />
+
+Naudotojui pasirinkus šį funkcionalumą, jis įveda studentą, kaip buvo aprašyta, kad reikia naudojant įvesties vektorių, įveda egzamino pažymį ir gauna įvestų rezultatų suvestį, t.y. įvestus studento vardą, pavardę ir galutinį pažymį skaičiuojant pagal vidurkį. Taip iliustruojamas įvedimo/išvedimo operatorių veikimas. 
+
+<img width="983" height="217" alt="image" src="https://github.com/user-attachments/assets/917e3cd6-93a7-464e-a666-47f81eb22712" />
+
+Verta paminėti, kad šiame testavime įvesti 3 pažymiai, kad įvestas Studentas klasės objektas galėtų būti panaudotas tolimesnėje demonstracijoje su Rule of Three objektais:
+
+<img width="1111" height="156" alt="image" src="https://github.com/user-attachments/assets/c74add45-2208-433f-a184-fcb71dcf175c" />
+
+Čia naudotojui yra parodomas objekto kopijavimas bei priskyrimas. Matant tik išvedimą į ekraną sunku matyti, kaip veikia šie konstruktorius ir operatorius, todėl verta pažiūrėti į vidinį kodą, kuriame yra aiškus jų naudojimo kode subtilumai:
+
+<img width="1336" height="453" alt="image" src="https://github.com/user-attachments/assets/e9d560e0-583c-4490-ae7e-8a8972ac64b8" />
+
+Iš čia galima matyti, kad kopija yra identiška pradiniam studentui ir yra sukuriamas naujas objektas, o priskyrimo operatorius priskiria egzistuojančius duomenis jau sukurtam objektui. Priskyrima atlikus ant egzistuojančio objekto jau su duomenimis, tie duomenys iš esmės yra "perrašomi", bet jei egzistuoja keli objektai su tokiais pat duomenimis, priskyrimas vykdomas tik konkrečiam vienam.
+
+
+
 # Įdiegimo instrukcija
 
 1. Kompiuteryje turėkite įdiegtus cmake interpretatorių bei C++ kompiliatorių. Jei neturite, galite juos įsidiegti čia: https://cmake.org/download/
