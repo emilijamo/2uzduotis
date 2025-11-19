@@ -268,8 +268,9 @@ int main (){
             s1 = ivestas;           
             cout << "Priskirtas anksciau ivestas studentas automatiniams studento duomenims: " << s1 << endl;
             
-            cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << (s2.vardas() == "Jonas") << endl;
-            
+            cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << std::boolalpha << (s2.vardas() == "Jonas") << endl;
+
+            return 0;
         }
     
     cout << "Kaip norite surikiuoti studentus?\n";
@@ -578,7 +579,7 @@ int main (){
                 
             return 0;
         }
-                else if (pasirinkimas ==6){
+            else if (pasirinkimas ==6){
             cout << "--Studento ivedimas rankiniu budu naudojant ivesties operatoriu --\n";
             Studentas ivestas;
             cin >> ivestas;
@@ -599,7 +600,9 @@ int main (){
             s1 = ivestas;           
             cout << "Priskirtas anksciau ivestas studentas automatiniams studento duomenims: " << s1 << endl;
             
-            cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << (s2.vardas() == "Jonas") << endl;
+            cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << std::boolalpha << (s2.vardas() == "Jonas") << endl;
+
+            return 0;
             
         }
     
@@ -704,6 +707,7 @@ int main (){
     }
     return 0;
 }
+
 
 
 
