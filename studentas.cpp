@@ -16,6 +16,22 @@ Studentas::Studentas(const std::string& vardas, const std::string& pavarde, cons
     skaiciuotiRezultatus();
 }
 
+Studentas::Studentas(const Studentas& kopija)
+    : vard_(kopija.vard_), pav_(kopija.pav_), paz_(kopija.paz_), egzas_(kopija.egzas_), rez_vidurkis_(kopija.rez_vidurkis_), rez_mediana_(kopija.rez_mediana_) {
+}
+
+Studentas& Studentas::operator=(const Studentas& priskiriamas) {
+    if (this != &priskiriamas) {  
+        vard_ = priskiriamas.vard_;
+        pav_ = priskiriamas.pav_;
+        paz_ = priskiriamas.paz_;
+        egzas_ = priskiriamas.egzas_;
+        rez_vidurkis_ = priskiriamas.rez_vidurkis_;
+        rez_mediana_ = priskiriamas.rez_mediana_;
+    }
+    return *this;
+}
+
 Studentas::Studentas(std::istream& is) {
     readStudent(is);
 }
@@ -47,3 +63,4 @@ void Studentas::skaiciuotiRezultatus() {
     rez_mediana_ = egzas_ * 0.6f + mediana(paz_) * 0.4f;
 
 }
+
