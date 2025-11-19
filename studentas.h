@@ -42,10 +42,14 @@ public:
     inline float getRezultatasVidurkis() const { return rez_vidurkis_; }
     inline float getRezultatasMediana() const { return rez_mediana_; }
 
+    friend std::istream& operator>>(std::istream& is, Studentas& studentas);
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& studentas);
+
     std::istream& readStudent(std::istream& is);
 
     void skaiciuotiRezultatus();
 };
+
 
 
 
