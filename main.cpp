@@ -258,7 +258,7 @@ int main (){
             Studentas s1("Jonas", "Jonaitis", {8,9,7}, 8);        
             cout << "Originalas: " << s1 << endl;
             
-            Studentas s2 = s1;  
+            Studentas s2 (s1);  
             cout << "Kopija (naudojamas kopijavimo konstruktorius): " << s2 << endl;
 
             Studentas s3;
@@ -590,7 +590,7 @@ int main (){
             Studentas s1("Jonas", "Jonaitis", {8,9,7}, 8);        
             cout << "Originalas: " << s1 << endl;
             
-            Studentas s2 = s1;  
+            Studentas s2 (s1);  
             cout << "Kopija (naudojamas kopijavimo konstruktorius): " << s2 << endl;
 
             Studentas s3;
@@ -707,6 +707,7 @@ int main (){
     }
     return 0;
 }
+
 
 
 
