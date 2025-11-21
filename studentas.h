@@ -32,7 +32,7 @@ public:
         rez_mediana_ = 0.0f;
     }
 
-    Studentas(const Studentas& kitas);  
+    Studentas(const Studentas& kopija);  
     Studentas& operator=(const Studentas& priskiriamas);  
 
     inline string vardas() const { return vard_; }
@@ -49,6 +49,7 @@ public:
 
     void skaiciuotiRezultatus();
 };
+
 
 
 
