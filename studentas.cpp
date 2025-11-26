@@ -19,8 +19,6 @@ Studentas::Studentas(const std::string& vardas, const std::string& pavarde, cons
 
 Studentas::Studentas(const Studentas& kopija)
     : Zmogus(kopija), 
-      vard_(kopija.vard_), 
-      pav_(kopija.pav_),
       paz_(kopija.paz_), 
       egzas_(kopija.egzas_),
       rez_vidurkis_(kopija.rez_vidurkis_), 
@@ -30,8 +28,6 @@ Studentas::Studentas(const Studentas& kopija)
 Studentas& Studentas::operator=(const Studentas& priskiriamas) {
     if (this != &priskiriamas) {  
         Zmogus::operator=(priskiriamas);
-        vard_ = priskiriamas.vard_;
-        pav_ = priskiriamas.pav_;
         paz_ = priskiriamas.paz_;
         egzas_ = priskiriamas.egzas_;
         rez_vidurkis_ = priskiriamas.rez_vidurkis_;
@@ -128,6 +124,7 @@ void Studentas::skaiciuotiRezultatus() {
     rez_mediana_ = egzas_ * 0.6f + mediana(paz_) * 0.4f;
 
 }
+
 
 
 
