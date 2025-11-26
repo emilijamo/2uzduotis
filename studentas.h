@@ -32,8 +32,8 @@ public:
     Studentas(const Studentas& kopija);  
     Studentas& operator=(const Studentas& priskiriamas);  
 
-    inline string vardas() const { return vard_; }
-    inline string pavarde() const { return pav_; }
+    inline string vardas() const override { return vard_; }
+    inline string pavarde() const override { return pav_; }
     inline const vector<int>& pazymiai() const { return paz_; }
     inline int egzaminas() const { return egzas_; }
     inline float getRezultatasVidurkis() const { return rez_vidurkis_; }
@@ -42,10 +42,11 @@ public:
     friend std::istream& operator>>(std::istream& is, Studentas& studentas);
     friend std::ostream& operator<<(std::ostream& os, const Studentas& studentas);
 
-    std::istream& readStudent(std::istream& is);
+    std::istream& readStudent(std::istream& is) override;
 
-    void skaiciuotiRezultatus();
+    void skaiciuotiRezultatus() override;
 };
+
 
 
 
