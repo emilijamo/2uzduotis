@@ -10,6 +10,28 @@ Programa turi funkcionalumą, leidžiantį pasirinkti generuoti atsitiktinius st
 Įvedant duomenis pažiam naudotojui, rezultatas yra lentelė, kurioje matoma studentų vardai, pavardės ir galutiniai rezultatai.  Taip pat naudotojui suteikiamas pasirinkimas, kaip skaičiuotą rezultatą jis nori matyti galutinėje išvestyje - naudojant medianą, vidurkį ar abiem variantais skaičiuotus rezultatus.
 Duomenis nuskaitant iš failo, naudotojas gali pasirinkti, nori matyti rezultatų lentelę terminale ar nori lentelę įrašyti į naują failą. Rezultatas nuskaitant nuo failo yra lentelė, kurioje pateikiami studentų vardai, pavardės ir galutiniai rezultatai, skaičiuoti tiek su mediana, tiek su vidurkiu. Pasirinkus lentelę įrašyti į failą, naudotojas gali studentus išvesti į du failus, išskirstant juos pagal jų galutinį pažymį. Į "vargšiukų" grupę yra skiriami studentai, kurių galutinis pažymys yra mažesnis už 5, o į "kietiakų" grupę skiriami studentai, kurių pažymys yra lygus arba didesnis už 5 (Verta atkreipti dėmesį, kad skirstant į grupes naudojami abiem būdais skaičiuoti galutiniai balai ir studentas į tam tikrą kategoriją skiriamas pagal jų vidurkį).
 
+# V1.5 aprašymas
+
+Šioje versijoje buvo patobulinta V1.2 versija, sukūrus bazinę (abstract) klasę Zmogus, o prieš tai buvusią klasę Studentas pavertus jos išvestine (derived) klase. Žmogaus klasė bendrai apibrėžia žmogų, t.y. jos atributai yra vardas bei pavardė, o Studento klasėje apibrėžti specifiniai studento atributai, t.y. namų darbų, egzamino pažymiai, galutiniai pažymiai (skaičiuoti mediana ir vidurkiu). 
+
+Atlikus šį pakeitimą kode yra išlaikomas Rule of Three veiksmingumas, kaip ir V1.2 programos versijoje. Toks rezultatas gaunamas vykdant Rule of Three testavimą V1.5 versijoje (rezultatai analogiški ankstesnės versijos testavimui):
+
+<img width="1148" height="534" alt="image" src="https://github.com/user-attachments/assets/196166cb-7ab5-4bc7-910c-51a796a54120" />
+
+***Abtrakčios klasės Zmogus objektų kūrimas***
+
+Klasė žmogus yra abstrakti - jos objektų kurti negalima, o galima kurti tik objektus gautus iš jos išvestinių klasių. Tokie objektai žinome, kad gali būti sukurti, nes sėkmingai versijoje 1.5 įvyko Rule of Three metodų testavimas. Galima pabandyti sukurti abstrakčios klasės objektą, kad įsitikinti, kad jo kurti negalima.
+
+Įvedus tokį kodą į programą:
+
+<img width="504" height="76" alt="image" src="https://github.com/user-attachments/assets/552efd52-90ec-4840-baa6-7c69e56cbbc8" />
+
+Metama atitinkama klaida:
+
+<img width="750" height="49" alt="error" src="https://github.com/user-attachments/assets/ebe86728-7b43-4913-8948-5ea94685dd47" />
+
+
+
 # V1.2 aprašymas
 
 ***Rule of Three implementacijos aprašymas***
