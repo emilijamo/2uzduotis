@@ -3,15 +3,14 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "zmogus.h"
 
 using std::string;
 using std::vector;
 
 
-class Studentas {
+class Studentas : public Zmogus {
 private:
-    std::string vard_;
-    std::string pav_;
     std::vector<int> paz_;
     int egzas_;
     float rez_vidurkis_;
@@ -24,8 +23,6 @@ public:
     Studentas(std::istream& is);
     
     ~Studentas() {
-        vard_.clear();
-        pav_.clear();
         paz_.clear();
         egzas_ = 0;
         rez_vidurkis_ = 0.0f;
@@ -49,6 +46,7 @@ public:
 
     void skaiciuotiRezultatus();
 };
+
 
 
 
