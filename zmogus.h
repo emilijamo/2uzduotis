@@ -18,9 +18,10 @@ public:
         pav_.clear();
     };
 
-    inline std::string vardas() const { return vard_; }
-    inline std::string pavarde() const { return pav_; }
+    virtual std::string vardas() const { return vard_; }
+    virtual std::string pavarde() const { return pav_; }
 
     virtual void skaiciuotiRezultatus() = 0;
     virtual std::istream& readStudent(std::istream& is) = 0;
+
 };
