@@ -270,7 +270,7 @@ int main (){
             
             cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << std::boolalpha << (s2.vardas() == "Jonas") << endl;
 
-            cout << "Bandoma sukurti Zmogaus klases objekta. Metamas atitinkamas error, nes negalima sukurti abstrakcios klases objekto."
+            cout << "Bandoma sukurti Zmogaus klases objekta. Metamas atitinkamas error, nes negalima sukurti abstrakcios klases objekto.";
             Zmogus objektas;  
             return 0;
         }
@@ -604,7 +604,7 @@ int main (){
             
             cout << "Ar kopija liko nepakitusi priskyrus ivesta studenta automatiniams duomenims? " << std::boolalpha << (s2.vardas() == "Jonas") << endl;
 
-            cout << "Bandoma sukurti Zmogaus klases objekta. Metamas atitinkamas error, nes negalima sukurti abstrakcios klases objekto."
+            cout << "Bandoma sukurti Zmogaus klases objekta. Metamas atitinkamas error, nes negalima sukurti abstrakcios klases objekto.";
             Zmogus objektas;    
 
             return 0;
@@ -712,6 +712,7 @@ int main (){
     }
     return 0;
 }
+
 
 
 
