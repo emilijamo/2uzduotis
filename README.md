@@ -10,30 +10,146 @@ Programa turi funkcionalumą, leidžiantį pasirinkti generuoti atsitiktinius st
 Įvedant duomenis pažiam naudotojui, rezultatas yra lentelė, kurioje matoma studentų vardai, pavardės ir galutiniai rezultatai.  Taip pat naudotojui suteikiamas pasirinkimas, kaip skaičiuotą rezultatą jis nori matyti galutinėje išvestyje - naudojant medianą, vidurkį ar abiem variantais skaičiuotus rezultatus.
 Duomenis nuskaitant iš failo, naudotojas gali pasirinkti, nori matyti rezultatų lentelę terminale ar nori lentelę įrašyti į naują failą. Rezultatas nuskaitant nuo failo yra lentelė, kurioje pateikiami studentų vardai, pavardės ir galutiniai rezultatai, skaičiuoti tiek su mediana, tiek su vidurkiu. Pasirinkus lentelę įrašyti į failą, naudotojas gali studentus išvesti į du failus, išskirstant juos pagal jų galutinį pažymį. Į "vargšiukų" grupę yra skiriami studentai, kurių galutinis pažymys yra mažesnis už 5, o į "kietiakų" grupę skiriami studentai, kurių pažymys yra lygus arba didesnis už 5 (Verta atkreipti dėmesį, kad skirstant į grupes naudojami abiem būdais skaičiuoti galutiniai balai ir studentas į tam tikrą kategoriją skiriamas pagal jų vidurkį).
 
-# V1.5 aprašymas
+# Įdiegimo instrukcija
 
-Šioje versijoje buvo patobulinta V1.2 versija, sukūrus bazinę (abstract) klasę Zmogus, o prieš tai buvusią klasę Studentas pavertus jos išvestine (derived) klase. Žmogaus klasė bendrai apibrėžia žmogų, t.y. jos atributai yra vardas bei pavardė, o Studento klasėje apibrėžti specifiniai studento atributai, t.y. namų darbų, egzamino pažymiai, galutiniai pažymiai (skaičiuoti mediana ir vidurkiu). 
+1. Kompiuteryje turėkite įdiegtus cmake interpretatorių bei C++ kompiliatorių. Jei neturite, galite juos įsidiegti čia: https://cmake.org/download/
+  https://cmake.org/download/
+  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022
 
-Atlikus šį pakeitimą kode yra išlaikomas Rule of Three veiksmingumas, kaip ir V1.2 programos versijoje. Toks rezultatas gaunamas vykdant Rule of Three testavimą V1.5 versijoje (rezultatai analogiški ankstesnės versijos testavimui):
+3. Iš šios github repozitorijos, atsisiųskite CMakeFiles.txt, duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h,zmogus.h, duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp, studentas.cpp failus
 
-<img width="1148" height="534" alt="image" src="https://github.com/user-attachments/assets/196166cb-7ab5-4bc7-910c-51a796a54120" />
+4. Susikurkite darbinį aplankalą, kuriame norėsite vykdyti programą. Į šį aplanką įdėkite visus parsisiųstusfailus iš github. Šiame aplankale sukurkite dar du aplankalus: src ir Include (būtinai tokiais pavadinimais). Į src aplanką perkelkite visus .cpp failus (duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp, studentas.cpp), o į Include visus .h failus (duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h,zmogus.h).
 
-***Abtrakčios klasės Zmogus objektų kūrimas***
+5. Tuomet terminalą nueikite iki savo darbinio aplankalo ir tuomet paleiskite šias komandas:
+   1) cmake CMakeLists.txt
+   2) cmake --build .
+   3) cd .\Debug\
+   4) .\v2.exe
 
-Klasė žmogus yra abstrakti - jos objektų kurti negalima, o galima kurti tik objektus gautus iš jos išvestinių klasių. Tokie objektai žinome, kad gali būti sukurti, nes sėkmingai versijoje 1.5 įvyko Rule of Three metodų testavimas. Galima pabandyti sukurti abstrakčios klasės objektą, kad įsitikinti, kad jo kurti negalima.
+Norint įdiegimą atlikti greičiau - pakartokite 1-3 žingsnius ir atsisiųskite repozitorijoje esantį run.bat failą. Jį taip pat įsikelkite į darbinį aplanką ir tiesiog paleiskite. Pirmą kartą atlikus įdiegimą programa pasileidžia automatiškai, bet jei norite ją paleisti dar kartą, per terminalą nueikite iki aplanko, kuriame yra .exe failas ir paleiskite jį įvedant terminale .\v2.exe
 
-Įvedus tokį kodą į programą:
+# Naudojimosi instrukcija
 
-<img width="504" height="76" alt="image" src="https://github.com/user-attachments/assets/552efd52-90ec-4840-baa6-7c69e56cbbc8" />
+Pasileidus programą, naudotojui leidžiama pasirinkti konteinerį, su kuriuo jis norės vykdyti programą.
 
-Metama atitinkama klaida:
+Įvedus atitinkamo konteinerio skaičių, naudotojui duodami pasirinkimai, ką gali daryti su programa:
 
-<img width="750" height="49" alt="error" src="https://github.com/user-attachments/assets/ebe86728-7b43-4913-8948-5ea94685dd47" />
+<img width="309" height="125" alt="visi_funkcionalumai" src="https://github.com/user-attachments/assets/0df920ec-e542-4f5f-b8f7-48842272f670" />
 
 
+*Tolimesnis programos veikimas, pasirinkus* ***1***:
 
-# V1.2 aprašymas
+Naudotojas įveda, kiek studentų norį įvesti į programą.
 
+Tuomet atitinkamai įveda studento vardą, pavardę.
+
+Studento pažymius galima įvesti 2 būdais - patiems arba sugeneruojant atsitiktinai:
+
+Pasirinkus įvedimą patiems, naudotojas žinant, kiek pažymių turi studentas, gali įvesti tą skaičių į programą ir tuomet ji leis įvesti tik atitinkamą skaičių pažymių. Naudotojas, nežinant kiek studentas turi pažymių, gali įvesti 'neaisku' ir tuomet vesti pažymius iki kol jie baigias ir įvedimą užbaigti įvedus 'baigti'. Abejais atvejais įvedus visus pažymius, paprašoma įvesti egzamino pažymį.
+Pasirinkus atsitiktinį generavimą, naudotojo paklausiama, kiek pažymių nori generuoti. Tuomet atitinkamai išmetamas tas skaičius pažymių ir taip pat sugeneruotas studento pažymys.
+
+Baigus pažymių įvedimą, naudotojas gali pasirinkti, kokiu būdu skaičiuoti galutinį pažymį - medianą, vidurkį ar abu.
+
+Tuomet pasirenkama, kaip rūšiuoti studentus rezultate - pagal vardą ar galutinį pažymį. Po šio įvedimo išmetamos nuorodos į studento vietą atmintyje.
+
+Naudotojas gali pasirinkti, ar nori resultato išvedimo į txt failą, ar ne. Pasirinkus ne, į terminalą išvedama lentelė, kurioje atitinkamai pagal pasirinkimą surūšiuojami studentai ir matomas skaičiuotas galutinis pažymys pagal pasirinktą būdą. Pasirinkus išvedimą į failą, naudotojas gali pasirinkti, ar nori rūšiuoti studentus į vargšiukus ir kietiakus. Jei nori studentai suskirstomi ir atitinkamai išvedami į du failus, kurių pavadinimą įveda naudotojas. Pasirinkus nerūšiuoti studentų, jie išvedami į vieną failą, kurio pavadinimą įveda naudotojas. Faile randama tokia pati lentelė, kuri gaunama ir pasirinkus išvedimą ne į failą.
+
+
+*Tolimesnis programos veikimas, pasirinkus* ***2***:
+
+Naudotojo paprašoma įvesti failo pavadinimą arba tikslią jo lokaciją kompiuteryje.
+
+Tuomet pasirenkama, kaip rūšiuoti studentus rezultate - pagal vardą ar galutinį pažymį. Po šio įvedimo išmetamos nuorodos į studento vietą atmintyje.
+
+Naudotojas gali pasirinkti, ar nori resultato išvedimo į txt failą, ar ne. Pasirinkus ne, į terminalą išvedama lentelė, kurioje atitinkamai pagal pasirinkimą surūšiuojami studentai ir matomas skaičiuotas galutinis pažymys pagal pasirinktą būdą. Pasirinkus išvedimą į failą, naudotojas gali pasirinkti, ar nori rūšiuoti studentus į vargšiukus ir kietiakus. Jei nori studentai suskirstomi ir atitinkamai išvedami į du failus, kurių pavadinimą įveda naudotojas. Pasirinkus nerūšiuoti studentų, jie išvedami į vieną failą, kurio pavadinimą įveda naudotojas. Faile randama tokia pati lentelė, kuri gaunama ir pasirinkus išvedimą ne į failą.
+
+
+*Tolimesnis programos veikimas, pasirinkus* ***3***:
+
+Naudotojas įveda failo pavadinimą, į kurį norės išsaugoti sugeneruotus duomenis (pavadinimą būtina įvesti su .txt gale). 
+
+Naudotojas įveda, kiek studentų norės sugeneruotame faile.
+
+Naudotojas įveda, kiek namų darbų pažymių turės kiekvienas studentas.
+
+Naudotojui suteikiamas pasirinkimas nuskaityti sugeneruotą failą iš karto. Jei pasirenkama nuskaityti, tai vykdomas 2 funkcionalumas nuo 2 žingsnio. Jei Nenuskaitoma, programa baigiama. Failas randamas darbiniame aplinke.
+
+
+*Tolimesnis programos veikimas, pasirinkus* ***4***:
+
+Naudotojo paprašoma įvesti failo pavadinimą, su kuriuo vykdys spartos analizę. Jei failas perskaitomas, naudotojas gauna eilutę: "Failas perskaitytas. Jame yra {atitinkamas skaičius} irasu."
+
+Naudotojo paklausiama, kaip nori rūšiuoti studentus. 
+
+Automatiškai yra suskirstoma į vargšiukus bei kietiakus. 
+
+Kaip rezultatas yra išmetami duomenys apie tam tikrus programos funkcionalumo veikimo laikus:
+
+"Bendri testavimo rezultatai, kai faile yra {atitinkamas skaičius} duomenu :
+
+{atitinkamas laikas} - studentu duomenu nuskaitymas is tekstinio failo.
+
+{atitinkamas laikas} - studentu rusiavimo pagal galutini rezultata laikas.
+
+{atitinkamas laikas} - studentu dalijimo i vargsiukus ir kietiakus laikas.
+
+{atitinkamas laikas} - studentu vargsiuku irasymo i faila laikas.
+
+{atitinkamas laikas} - studentu kietiaku irasymo i faila laikas."
+
+
+*Tolimesnis programos veikimas, pasirinkus* ***5***:
+
+Naudotojo paprašoma įvesti failo pavadinimą, su kuriuo vykdys strategijų analizę. Jei failas perskaitomas, naudotojas gauna eilutę: "Testavimas bus atliktas su failu, kuriame yra {atitinkamas skaičius} eiluciu."
+
+Kaip rezultatas yra išmetami duomenys apie realizuotų strategijų veikimo laikus ir užimamą vietą atmintyje.
+
+*Proogramos rezultato lentelės pavyzdys*
+
+<img width="324" height="116" alt="rezultatas_vid_pvz" src="https://github.com/user-attachments/assets/cecf23b4-04ec-4b99-b2c5-e001fd492ed7" />
+
+
+# Kiekvienos versijos aprašymas
+
+*V.01*
+
+- Galimas studentų įvedimas žinant ir nežinant pradinio pažymių skaičiaus
+- Apskaičiuojamas studentų galutinis balas pagal pažymių vidurkį bei medianą
+- Studentų duomenis į programą galima įkelti ir nuskaitant iš failo
+- Išvedami rezultatai lentelėje sūrušiuoti
+
+
+*V.02 (patobulinta V.01)*
+
+- Studentai gali būti sūrušiuoti į kategorijas ir rezultatai išvedami į faila
+- Atliktas kodo refactoringas 
+- Pridėtas funkcionalumas - spartos analizė, matuojantis programos funkcionalumų užtrunkamą laiką
+  
+
+*V.03 (patobulinta V.02)*
+
+- Vartotojui leidžiama pasirinkti konteinerį, su kuriuo nori dirbti
+- Atitinkami metodai pritaikyti std::list vektoriui
+- Atlikta spartos analizė abiems konteineriams
+
+
+*V.10 (patobulinta V.03)* 
+ 
+- Studentų dalijimui pridėtos 2 naujos strategijos ir atlikta jų laiko analizė
+
+*Po šios versijos prasideda 2 užduoties išleistų versijų aprašai, 1 užduoties versijų aprašymai paliekami dėl vientisumo*
+
+
+*V1.1 (patobulinta V1.0)*
+
+- Nukopijuota senoji pirmosios užduoties repozicija į naująją
+- Atlikti kode pakeitimai - pereita nuo ankstesnės studento struktūros į klasę
+- Palyginta abiejų programų: naudojančios struct iš ankstesniojo darbo ir naudojančio class tipo Studentus iš dabartinės realizacijos sparta (veikimo laikas), naudojant vieną fiksuotą konteinerį, vektorių, bei pačią greičiausią dalijimo strategiją ir 100000 ir 1000000 dydžio failus. Rezultatus galima rasti apraše (README.md), " Realizacijos spartos testavimas su struct ir class" skiltyje.
+- Atlikta eksperimentinė analizė priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3. Resultatus galima rasti apraše ((README.md), skiltyje "Eksperimentinė analizė"
+
+  
+*V1.2 (patobulinta V1.1)*
+ 
 ***Rule of Three implementacijos aprašymas***
 
 *Destruktorius*
@@ -115,25 +231,27 @@ Verta paminėti, kad šiame testavime įvesti 3 pažymiai, kad įvestas Studenta
 
 Iš čia galima matyti, kad kopija yra identiška pradiniam studentui ir yra sukuriamas naujas objektas, o priskyrimo operatorius priskiria egzistuojančius duomenis jau sukurtam objektui. Priskyrima atlikus ant egzistuojančio objekto jau su duomenimis, tie duomenys iš esmės yra "perrašomi", bet jei egzistuoja keli objektai su tokiais pat duomenimis, priskyrimas vykdomas tik konkrečiam vienam.
 
+*V1.5 aprašymas (patobulinta V1.5)*
+
+Šioje versijoje buvo patobulinta V1.2 versija, sukūrus bazinę (abstract) klasę Zmogus, o prieš tai buvusią klasę Studentas pavertus jos išvestine (derived) klase. Žmogaus klasė bendrai apibrėžia žmogų, t.y. jos atributai yra vardas bei pavardė, o Studento klasėje apibrėžti specifiniai studento atributai, t.y. namų darbų, egzamino pažymiai, galutiniai pažymiai (skaičiuoti mediana ir vidurkiu). 
+
+Atlikus šį pakeitimą kode yra išlaikomas Rule of Three veiksmingumas, kaip ir V1.2 programos versijoje. Toks rezultatas gaunamas vykdant Rule of Three testavimą V1.5 versijoje (rezultatai analogiški ankstesnės versijos testavimui):
+
+<img width="1148" height="534" alt="image" src="https://github.com/user-attachments/assets/196166cb-7ab5-4bc7-910c-51a796a54120" />
+
+***Abtrakčios klasės Zmogus objektų kūrimas***
+
+Klasė žmogus yra abstrakti - jos objektų kurti negalima, o galima kurti tik objektus gautus iš jos išvestinių klasių. Tokie objektai žinome, kad gali būti sukurti, nes sėkmingai versijoje 1.5 įvyko Rule of Three metodų testavimas. Galima pabandyti sukurti abstrakčios klasės objektą, kad įsitikinti, kad jo kurti negalima.
+
+Įvedus tokį kodą į programą:
+
+<img width="504" height="76" alt="image" src="https://github.com/user-attachments/assets/552efd52-90ec-4840-baa6-7c69e56cbbc8" />
+
+Metama atitinkama klaida:
+
+<img width="750" height="49" alt="error" src="https://github.com/user-attachments/assets/ebe86728-7b43-4913-8948-5ea94685dd47" />
 
 
-# Įdiegimo instrukcija
-
-1. Kompiuteryje turėkite įdiegtus cmake interpretatorių bei C++ kompiliatorių. Jei neturite, galite juos įsidiegti čia: https://cmake.org/download/
-  https://cmake.org/download/
-  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022
-
-3. Iš šios github repozitorijos, atsisiųskite CMakeFiles.txt, duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h, duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp, studentas.cpp failus
-
-4. Susikurkite darbinį aplankalą, kuriame norėsite vykdyti programą. Į šį aplanką įdėkite visus parsisiųstusfailus iš github. Šiame aplankale sukurkite dar du aplankalus: src ir Include (būtinai tokiais pavadinimais). Į src aplanką perkelkite visus .cpp failus (duom_ivedimo_isvedimo_f.cpp, main.cpp, pagalbines_f.cpp, skaiciavimo_f.cpp, studentas.cpp), o į Include visus .h failus (duom_ivedimo_isvedimo_f.h, pagalbines_f.h skaiciavimo_f.h,studentas.h).
-
-5. Tuomet terminalą nueikite iki savo darbinio aplankalo ir tuomet paleiskite šias komandas:
-   1) cmake CMakeLists.txt
-   2) cmake --build .
-   3) cd .\Debug\
-   4) .\v1_1.exe
-
-Norint įdiegimą atlikti greičiau - pakartokite 1-3 žingsnius ir atsisiųskite repozitorijoje esantį run.bat failą. Jį taip pat įsikelkite į darbinį aplanką ir tiesiog paleiskite. Pirmą kartą atlikus įdiegimą programa pasileidžia automatiškai, bet jei norite ją paleisti dar kartą, per terminalą nueikite iki aplanko, kuriame yra .exe failas ir paleiskite jį įvedant terminale .\v1_1.exe
 
 # Realizacijos spartos testavimas su struct ir class
 Atliktas testavimas su fiksuotu vektoriaus konteineriu, jo greičiausia dalijimo, t.y. 3 anksčiau realizuota strategi ir 100000 bei 1000000 dydžio failus (tokie patys kaip naudoti ankstesniuose testavimuose). Matuojami buvo 5 programos veiksnumai: nuskaitymas iš failo, duomenų rūšiavimas pagal galutinį pažymį(šiuo atveju kreipiamas dėmesys ir į mediana skaičiuota pažymi, ir į vidurkiu), studentų išskirstymas pagal pažymius į vargšiukus ir kietiakus (skirstymo pagrindas apibrėžtas programos aprašyme), tuomet tų grupių išvedimas į du atskirus failus bei bendras programos veikimo laikas, t.y. visų kitų laikų suma.
@@ -177,35 +295,6 @@ Eksperimentinė analizė atlikta priklausomai nuo kompiliatoriaus optimizavimo l
 | O1      | 1,000,000      | 4.164       | 11.908         | 0.573                  | 6.569       | 8.142        | 31.356         | 286              |
 | O2      | 1,000,000      | 4.603       | 11.870         | 0.428                  | 5.117       | 8.103        | 30.121         | 276              |
 | O3      | 1,000,000      | 12.409      | 4.399          | 0.628                  | 5.000       | 8.650        | 31.087         | 305              |
-
-
-# Kiekvienos versijos aprašymas
-
-*V.01*
-
-- Galimas studentų įvedimas žinant ir nežinant pradinio pažymių skaičiaus
-- Apskaičiuojamas studentų galutinis balas pagal pažymių vidurkį bei medianą
-- Studentų duomenis į programą galima įkelti ir nuskaitant iš failo
-- Išvedami rezultatai lentelėje sūrušiuoti
-
-
-*V.02 (patobulinta V.01)*
-
-- Studentai gali būti sūrušiuoti į kategorijas ir rezultatai išvedami į faila
-- Atliktas kodo refactoringas 
-- Pridėtas funkcionalumas - spartos analizė, matuojantis programos funkcionalumų užtrunkamą laiką
-  
-
-*V.03 (patobulinta V.02)*
-
-- Vartotojui leidžiama pasirinkti konteinerį, su kuriuo nori dirbti
-- Atitinkami metodai pritaikyti std::list vektoriui
-- Atlikta spartos analizė abiems konteineriams
-
-
- *V.10 (patobulinta V.03)* 
- 
-- Studentų dalijimui pridėtos 2 naujos strategijos ir atlikta jų laiko analizė
 
 
 # Greičio tyrimai
@@ -467,85 +556,7 @@ Buvo matuojamas failų kūrimo greitis, kuriant failą su ***1000, 10000,100000,
 | 10,000,000     | 0                     | 495,566,640    | 704,433,360   | 1,200,000,000 |
 
 
-# Naudojimosi instrukcija
 
-Pasileidus programą, naudotojui leidžiama pasirinkti konteinerį, su kuriuo jis norės vykdyti programą.
-
-Įvedus atitinkamo konteinerio skaičių, naudotojui duodami pasirinkimai, ką gali daryti su programa:
-
-<img width="309" height="125" alt="visi_funkcionalumai" src="https://github.com/user-attachments/assets/0df920ec-e542-4f5f-b8f7-48842272f670" />
-
-
-*Tolimesnis programos veikimas, pasirinkus* ***1***:
-
-Naudotojas įveda, kiek studentų norį įvesti į programą.
-
-Tuomet atitinkamai įveda studento vardą, pavardę.
-
-Studento pažymius galima įvesti 2 būdais - patiems arba sugeneruojant atsitiktinai:
-
-Pasirinkus įvedimą patiems, naudotojas žinant, kiek pažymių turi studentas, gali įvesti tą skaičių į programą ir tuomet ji leis įvesti tik atitinkamą skaičių pažymių. Naudotojas, nežinant kiek studentas turi pažymių, gali įvesti 'neaisku' ir tuomet vesti pažymius iki kol jie baigias ir įvedimą užbaigti įvedus 'baigti'. Abejais atvejais įvedus visus pažymius, paprašoma įvesti egzamino pažymį.
-Pasirinkus atsitiktinį generavimą, naudotojo paklausiama, kiek pažymių nori generuoti. Tuomet atitinkamai išmetamas tas skaičius pažymių ir taip pat sugeneruotas studento pažymys.
-
-Baigus pažymių įvedimą, naudotojas gali pasirinkti, kokiu būdu skaičiuoti galutinį pažymį - medianą, vidurkį ar abu.
-
-Tuomet pasirenkama, kaip rūšiuoti studentus rezultate - pagal vardą ar galutinį pažymį. Po šio įvedimo išmetamos nuorodos į studento vietą atmintyje.
-
-Naudotojas gali pasirinkti, ar nori resultato išvedimo į txt failą, ar ne. Pasirinkus ne, į terminalą išvedama lentelė, kurioje atitinkamai pagal pasirinkimą surūšiuojami studentai ir matomas skaičiuotas galutinis pažymys pagal pasirinktą būdą. Pasirinkus išvedimą į failą, naudotojas gali pasirinkti, ar nori rūšiuoti studentus į vargšiukus ir kietiakus. Jei nori studentai suskirstomi ir atitinkamai išvedami į du failus, kurių pavadinimą įveda naudotojas. Pasirinkus nerūšiuoti studentų, jie išvedami į vieną failą, kurio pavadinimą įveda naudotojas. Faile randama tokia pati lentelė, kuri gaunama ir pasirinkus išvedimą ne į failą.
-
-
-*Tolimesnis programos veikimas, pasirinkus* ***2***:
-
-Naudotojo paprašoma įvesti failo pavadinimą arba tikslią jo lokaciją kompiuteryje.
-
-Tuomet pasirenkama, kaip rūšiuoti studentus rezultate - pagal vardą ar galutinį pažymį. Po šio įvedimo išmetamos nuorodos į studento vietą atmintyje.
-
-Naudotojas gali pasirinkti, ar nori resultato išvedimo į txt failą, ar ne. Pasirinkus ne, į terminalą išvedama lentelė, kurioje atitinkamai pagal pasirinkimą surūšiuojami studentai ir matomas skaičiuotas galutinis pažymys pagal pasirinktą būdą. Pasirinkus išvedimą į failą, naudotojas gali pasirinkti, ar nori rūšiuoti studentus į vargšiukus ir kietiakus. Jei nori studentai suskirstomi ir atitinkamai išvedami į du failus, kurių pavadinimą įveda naudotojas. Pasirinkus nerūšiuoti studentų, jie išvedami į vieną failą, kurio pavadinimą įveda naudotojas. Faile randama tokia pati lentelė, kuri gaunama ir pasirinkus išvedimą ne į failą.
-
-
-*Tolimesnis programos veikimas, pasirinkus* ***3***:
-
-Naudotojas įveda failo pavadinimą, į kurį norės išsaugoti sugeneruotus duomenis (pavadinimą būtina įvesti su .txt gale). 
-
-Naudotojas įveda, kiek studentų norės sugeneruotame faile.
-
-Naudotojas įveda, kiek namų darbų pažymių turės kiekvienas studentas.
-
-Naudotojui suteikiamas pasirinkimas nuskaityti sugeneruotą failą iš karto. Jei pasirenkama nuskaityti, tai vykdomas 2 funkcionalumas nuo 2 žingsnio. Jei Nenuskaitoma, programa baigiama. Failas randamas darbiniame aplinke.
-
-
-*Tolimesnis programos veikimas, pasirinkus* ***4***:
-
-Naudotojo paprašoma įvesti failo pavadinimą, su kuriuo vykdys spartos analizę. Jei failas perskaitomas, naudotojas gauna eilutę: "Failas perskaitytas. Jame yra {atitinkamas skaičius} irasu."
-
-Naudotojo paklausiama, kaip nori rūšiuoti studentus. 
-
-Automatiškai yra suskirstoma į vargšiukus bei kietiakus. 
-
-Kaip rezultatas yra išmetami duomenys apie tam tikrus programos funkcionalumo veikimo laikus:
-
-"Bendri testavimo rezultatai, kai faile yra {atitinkamas skaičius} duomenu :
-
-{atitinkamas laikas} - studentu duomenu nuskaitymas is tekstinio failo.
-
-{atitinkamas laikas} - studentu rusiavimo pagal galutini rezultata laikas.
-
-{atitinkamas laikas} - studentu dalijimo i vargsiukus ir kietiakus laikas.
-
-{atitinkamas laikas} - studentu vargsiuku irasymo i faila laikas.
-
-{atitinkamas laikas} - studentu kietiaku irasymo i faila laikas."
-
-
-*Tolimesnis programos veikimas, pasirinkus* ***5***:
-
-Naudotojo paprašoma įvesti failo pavadinimą, su kuriuo vykdys strategijų analizę. Jei failas perskaitomas, naudotojas gauna eilutę: "Testavimas bus atliktas su failu, kuriame yra {atitinkamas skaičius} eiluciu."
-
-Kaip rezultatas yra išmetami duomenys apie realizuotų strategijų veikimo laikus ir užimamą vietą atmintyje.
-
-*Proogramos rezultato lentelės pavyzdys*
-
-<img width="324" height="116" alt="rezultatas_vid_pvz" src="https://github.com/user-attachments/assets/cecf23b4-04ec-4b99-b2c5-e001fd492ed7" />
 
 
 
