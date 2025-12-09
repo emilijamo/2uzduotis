@@ -8,16 +8,26 @@
 using std::string;
 using std::vector;
 
+/**
+ * @class Studentas
+ * @brief Tai isvestine (derived) klase,sauganti studento duomenis ir juos apdorojanti
+ *
+ * Paveldi iš bazines klases Zmogus varda bei pavarde ir prideda studentui budingus duomenis: pazymiu sarasa, egzamino rezultata, galutinio balo skaiciavima pagal vidurki ir mediana
+ */
 
 class Studentas : public Zmogus {
 private:
-    std::vector<int> paz_;
-    int egzas_;
-    float rez_vidurkis_;
-    float rez_mediana_;
+    std::vector<int> paz_; /// Namu darbu pazymiu vektorius
+    int egzas_; /// Egzamino pazymys
+    float rez_vidurkis_; /// Galutinis balas pagal vidurki
+    float rez_mediana_; /// Galutinis balas pagal mediana
 
 public:
+    /**
+     * @brief Numatytais parametrais sukurtas studentas.
+     */
     Studentas();
+
     Studentas(const string& vard, const string& pav);
     Studentas(const string& vard, const string& pav, const vector<int>& paz, int egzas);
     Studentas(std::istream& is);
@@ -46,6 +56,7 @@ public:
 
     void skaiciuotiRezultatus() override;
 };
+
 
 
 
