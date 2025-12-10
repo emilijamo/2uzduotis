@@ -252,6 +252,18 @@ Metama atitinkama klaida:
 <img width="750" height="49" alt="error" src="https://github.com/user-attachments/assets/ebe86728-7b43-4913-8948-5ea94685dd47" />
 
 
+*V2.0 aprašymas (patobulinta V1.5)*
+
+Atlikta studentas.h ir zmogus.h (Zmogus ir Studentas klasių) dokumentacija, pasitelkiant Doxygen. Tai galima rasti atkirame doxygen html kataloge dabartinėje repozicijoje.
+
+Realizuotas Unit Testas (realizuotas naudojant catch2 framework'ą) dabartinei Studentas klasei. Realizuoti testai: 
+
+- Bazinio konstruktoriaus
+- Konstruktoriaus, turint visus studento duomenis(vardą, pavardę, namų darbų pažymius, egzamino rezultatą)
+- skaiciuotiRezultatus funkcijos veikimas
+- Kopijavimo konstruktorius
+- Priskyrimo operatorius
+  
 
 # Realizacijos spartos testavimas su struct ir class
 Atliktas testavimas su fiksuotu vektoriaus konteineriu, jo greičiausia dalijimo, t.y. 3 anksčiau realizuota strategi ir 100000 bei 1000000 dydžio failus (tokie patys kaip naudoti ankstesniuose testavimuose). Matuojami buvo 5 programos veiksnumai: nuskaitymas iš failo, duomenų rūšiavimas pagal galutinį pažymį(šiuo atveju kreipiamas dėmesys ir į mediana skaičiuota pažymi, ir į vidurkiu), studentų išskirstymas pagal pažymius į vargšiukus ir kietiakus (skirstymo pagrindas apibrėžtas programos aprašyme), tuomet tų grupių išvedimas į du atskirus failus bei bendras programos veikimo laikas, t.y. visų kitų laikų suma.
